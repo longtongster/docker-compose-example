@@ -8,7 +8,7 @@ In this example redis is used as an example to store the number of times the sit
 For this a redis container will be started. You can configure to run the redis container to listen op port 6379.
 When using docker compose the services can communicate via the name of their services.
 
-## method 1
+## method 1 - using only a redis container
 
 Run only with a redis container. In `app.py` comment out the `host='redis'`  argument of the `redis.Redis()` call.
 This is required since we do not cannot call a container network called `redis`.
@@ -39,13 +39,26 @@ You can check the data inside the redis container by opening the webbrowser on `
 
 ## With docker-compose
 With docker-compose both the redis container AND the simple app can be started with one command.
-Here we follow the steps from the docker tutorial (see above).
+Here we follow the steps from the docker tutorial (see above). Go to the folder with the `docker-compose up -d` command.
 
+In the `docker-compose.yml` port 5000 on the container is mapped to 8000 on the host. So open a webbrowser and type
 
+`http;/localhost;8000`
 
+The services that runs redis is called `redis`. This means that in the network that docker-compose created we can use 
+the name redis as DNS. docker-compose will map this DNS name to the interal IP adress.
+
+In order to stop the services docker compose started. Enter
+
+`docker-cmpose down`
+
+In the directory of the `docker-compose.yml` file. 
 
 #### extra
 In the directory `quick-redis` is a very simple script that connects to redis, adds and retreives some data. 
-You can use the grapical interface to see the data in the webbrowser
+You can use the grapical interface to see the data in the webbrowser.
+
+
+
 
 

@@ -28,7 +28,7 @@ The following steps can be followed:
 2. Launch a redis container in the network and with ports exposed
    docker run --name redis --network redis -p 6379:6379 -d redis
 3. Launch a graphical interface to check if data is indeed added using
-   docker run --name redis-commander --network redis -p 8081:8081 -d -e REDIS_HOST=redis rediscommander/redis-commander
+   `docker run --name redis-commander --network redis -p 8081:8081 -d -e REDIS_HOST=redis rediscommander/redis-commander` 
 4. build the container using the docker file in the app directory
    `docker image build -t flask-app .` Do not forget the dot.
 5. Launch a container from the flask-app image

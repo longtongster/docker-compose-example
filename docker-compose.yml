@@ -1,7 +1,21 @@
 services:
   web:
-      build: ./app
-      ports:
-        - "8000:5000"
+    build: ./app
+    ports:
+      - "8000:5000"
+    volumes:
+      - ./app:/code
+    environment:
+      FLASK_DEBUG: "true"
   redis:
     image: "redis:alpine"
+  redis-commander:
+    # This start a redis-commander container that provides a graphical user interface to see directly see the data
+    # in the redis service. It is available on port 8081 on the host. The environment variable is required otherwise
+    # the redis-commander container cannot connect to the redis database.
+    image: rediscommander/redis-commander
+    ports:
+      - 8081:8081
+    environment:
+      - REDIS_HOST=redis
+

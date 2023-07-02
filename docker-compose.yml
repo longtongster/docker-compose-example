@@ -3,12 +3,15 @@ services:
     build: ./app
     ports:
       - "8000:5000"
+    # The app Dockerfile created a directory code. We create a volume that maps
+    # the content on the ./app dir to the /code dir in the container.
+    # any change you make in the app.py file wil be reflected in the service
     volumes:
       - ./app:/code
     environment:
       FLASK_DEBUG: "true"
   redis:
-    image: "redis:alpine"
+    image: "redis:${TAG}"
   redis-commander:
     # This start a redis-commander container that provides a graphical user interface to see directly see the data
     # in the redis service. It is available on port 8081 on the host. The environment variable is required otherwise

@@ -8,6 +8,9 @@ In this example a redis container is used as a database to store the number of t
 You can configure to run the redis container to listen op port 6379. 
 When using docker compose the services can communicate via the name of their services.
 
+## general remarks:
+- use the python logging module to show messages when docker container logs <container id> is used
+
 ## method 1 - using only a redis container
 
 Run only with a redis container. In `app.py` comment out the `host='redis'`  argument of the `redis.Redis()` call.

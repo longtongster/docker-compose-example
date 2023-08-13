@@ -9,7 +9,9 @@ You can configure to run the redis container to listen op port 6379.
 When using docker compose the services can communicate via the name of their services.
 
 ## general remarks:
-- use the python logging module to show messages when docker container logs <container id> is used
+1. Use the python logging module to show messages when docker container logs <container id> is used
+-  cat .env
+2. The docker-compose.yml file contains a reference to a variable `image: "redis:${TAG}"`. You can create a .env and define this variable in this file as for example `TAG=latest`.  
 
 ## method 1 - using only a redis container
 
